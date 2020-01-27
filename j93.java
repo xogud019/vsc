@@ -143,9 +143,9 @@ public class j93{   //RequesBillboardHow
 
     public String replace(String msg){
         String ss = msg;
-        ss = ss.replaceAll("&#039", "");
-        ss = ss.replaceAll("&amp", "&");
-        ss = ss.replaceAll("&quot", "\"");
+        ss = ss.replaceAll("&#039;", "");
+        ss = ss.replaceAll("&amp;", "&");
+        ss = ss.replaceAll("&quot;", "\"");
         return ss.trim();
     }
 
