@@ -19,7 +19,7 @@ public class j84{
 
     public static void showAbout(j83 bb){
         System.out.println("1---------------");
-        String sf = String.format("%d,%s,%d,%s,%s",bb.getRank(),bb.getSong(),bb.getLastWeek(),bb.getImageSrc(),bb.getArtist());
+        String sf = String.format("%d,%s,%d,%s,%s",bb.getRank(),bb.getSong(),bb.getLastweek(),bb.getImagesrc(),bb.getArtist());
         System.out.println(sf);
     }
 

@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class j93{
+public class j93{   //RequesBillboardHow
     ArrayList<String> htmls = new ArrayList<>();
     ArrayList<j83> billboards = new ArrayList<j83>();
     boolean isConnection = false;

@@ -9,7 +9,7 @@ public class j83main{
     }
 
     public static void showAbout(j83 bb){
-        String sf = String.format("%d,%s,%d,%s,%s",bb.getRank(),bb.getSong(),bb.getLastWeek(),bb.getImageSrc(),bb.getArtist());
+        String sf = String.format("%d,%s,%d,%s,%s",bb.getRank(),bb.getSong(),bb.getLastweek(),bb.getImagesrc(),bb.getArtist());
         System.out.printf(sf);
     }
 }

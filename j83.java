@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class j83 implements Serializable{
+public class j83 implements Serializable{ //billboard
     private int rank;
     private int lastWeek;
     private String song;
