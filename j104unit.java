@@ -3,11 +3,11 @@ public class j104unit{
     public static final String[] SUIT = {"H","C"};
     public static final String[] VALU = {"A","2","3","4","5","6","7","8","9","1"};
     
-    public static int toVal(j104card c){
+    public static int toVal(Card c){
         return toVal(c.getCardVal().charAt(1));
     }
 
-    public static int toVal(j104card c, int index){
+    public static int toVal(Card c, int index){
         return toVal(c.getCardVal().charAt(index));
     }
 
