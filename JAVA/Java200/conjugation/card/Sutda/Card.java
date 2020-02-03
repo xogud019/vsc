@@ -1,7 +1,7 @@
 public class Card{
     public static final int SUTDA = 2;
     public static final String[] SUIT = {"H","C"};
-    public static final String[] VALU = {"A","2","3","4","5","6","7","8","9","1"};
+    public static final String[] VALU = {"A","2","3","4","5","6","7","8","9","T"};
     
     private String cardVal;
 

@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
-public class j106cardcase{
+public class Cardcase{
     private List<Card> card = new ArrayList<>();
 
-    public j106cardcase(){
+    public Cardcase(){
         card.clear();
     }
 
@@ -51,12 +51,7 @@ public class j106cardcase{
     }
 
     public void sort(){
-        card.sort(new j107cardCompare());
+        card.sort(new CardCompare());
     }
 
-	public void rSrot() {
-        card.rSort(new j107cardRCompare());
-	}
-
-  
 }

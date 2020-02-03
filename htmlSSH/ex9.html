@@ -23,32 +23,30 @@
     </ul>
     <h2>Parameter & Argument</h2>
     <script>
-        function onePlusOne() {
-
-            document.write(1 + 1 + '<br>');
-        }
-        onePlusOne();
-
+        /*  function onePlusOne() {
+                                                                                                                            document.write(1 + 1 + '<br>');
+                                                                                                                        }
+                                                                                                                        onePlusOne();
+                                                                                                                */
         function sum(left, right) {
-            document.write(left + right + '<br>');
-
+            document.write(left + right);
         }
 
         function sum2(left, right) {
             return left + right;
         }
 
-        function sumColorRed(left, right) {
-            document.write('<div style="color:red;">' + (1 + 2) + '</div><br>');
-
+        function sumColorRed1(a, b) {
+            document.write('<div style="color:red;">' + (a + b) + '</div><br>');
         }
 
         /* function sumColorRed(left, right) {
             document.write('<div style="color:red;">' + sum2(left, right) + '</div><br>');
 
         }*/
-        // sum(2, 3);
-        sumColorRed(2, 3);
+        sum(2, 3);
+        sumColorRed1(2, 3);
+
         //sum(5, 2);
     </script>
     <h2>Return</h2>
