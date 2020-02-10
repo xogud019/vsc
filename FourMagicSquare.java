@@ -1,49 +1,46 @@
-//j114+j115
-public class OddMagicSquare{
-    private int [][] magic;
-    private int n; //magic square`s size:n*n
+//j116
+public class FourMagicSquare{
+    private int[][] magic;
+    private int n;
 
     public int[][] getMagic(){
         return magic;
     }
 
-    public OddMagicSquare(int n){
+    public FourMagicSquare(int n){
         magic = new int[n][n];
         this.n = n;
     }
 
-    public OddMagicSquare(){
-        this(5);
+    public FourMagicSquare(){
+        this(4);
     }
 
     public void make(){
-        int x=0;
-        int y=n/2;
+        makeA();
+        makeB();
+    }
+    
+    private void makeB(){
+        for(int i =0;i<n;i++){
+            for(int j=0; j<n; j++){
+                if((i>=0&&i<n/4)||(i>=n/4*3&&i<n)){
+                    if(j>=n/4&&j<n/4*3){
+                        magic[i][j] =n*n-(i*n+j);
+                    }
+                }
+                else{
+                    if((j>=0&&j<n/4)||(j>=n/4*3&&j<n)){
+                        magic[i][j] = n*n-(i*n+j);
+                    }
+                }
+            }
+        }
+    }
 
-        for(int i=1; i<=n*n;i++){
-            int temX = x;
-            int temY = y;
-            System.out.print("("+x + y+")"+"\t");
-            magic[x][y] = i;
-
-            if(x-1<0){
-                x=n-1;
-            }
-            else{
-                x--;
-            }
-
-            if(y-1<0){
-                y=n-1;
-            }
-            else{
-                y--;
-            }
-
-            if(magic[x][y]!=0){
-                x= temX+1;
-                y= temY;
-            }
+    private void makeA(){
+        for(int i =0; i<n*n; i++){
+            magic[i/n][i%n] = i+1;
         }
     }
 
