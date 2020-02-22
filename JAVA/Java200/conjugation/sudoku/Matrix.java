@@ -3,11 +3,7 @@ import java.util.Arrays;
 
 public class Matrix{
     private double[][] matrix;
-    private double[] matrix1;
 
-    public Matrix(int n){
-        matrix1 = new double[n];
-    }
     public Matrix(int m, int n){
         matrix = new double[m][n];
     }
@@ -17,15 +13,7 @@ public class Matrix{
     }
 
     public Matrix(Matrix mat){
-        this(mat.getMatrix1());
-    }
-
-    public Matrix(Matrix mat){
         this(mat.getMatrix());
-    }
-
-    public Matrix(double[] deep){
-        matrix1 = deepCopy1(deep);
     }
 
     public Matrix(double[][] deep){
@@ -51,22 +39,10 @@ public class Matrix{
         return paste;
     }
 
-    public double[] deepCopy1(double[] deep){
-        int m = deep.length;
-        double[] paste= new double[m];
-        for(int i=0;i<m;i++){
-            paste[i]=deep[i];
-        }
-        return paste;
-    }
-
     public double[][] getMatrix(){
         return deepCopy(matrix);
     }
 
-    public double[] getMatrix1(){
-        return deepCopy1(matrix1);
-    }
     public Matrix makeMatrix(){
         return new Matrix(matrix);
     }
@@ -81,11 +57,5 @@ public class Matrix{
         System.out.println("------------------------------");
     }
 
-    public void print1(){
-        for(int i=0; i<matrix1.length; i++){
-            System.out.print(matrix1[i]+"\t");
-        }
-        System.out.println();
-        System.out.println("------------------------------");
-    }
+ 
 }
