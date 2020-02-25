@@ -46,7 +46,13 @@ public class openChatMain{
         		
         	}
         	else if(array[0].equals(s2)) {
-        		mgr.saveRecord(s);
+        		if(mgr.getRecord(array[1])==null) {
+        			System.out.println("not exist");
+        		}
+        		else {
+        			mgr.saveRecord(s);
+        	
+        		}
         	}
         	else if(array[0].equals(s3)) {
         		mgr.saveRecord(s);
