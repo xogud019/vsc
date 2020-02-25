@@ -77,14 +77,35 @@ public class HeadManager{
             System.out.println("you are not HeadMgr");
         }
     }
-    private void getLoaclMgrStat(){
-        if(isHM ==true){
 
+    private LocalManager getLoaclMgrStat(){
+        if(isHM ==true){
         }
         else{
             System.out.println("you are not HeadMgr");
         }
     }
+
+    public void printRecentMgrStat(){
+        if(isHM ==true){
+            if(j==0){
+                System.out.println("no Local Manager");
+            }
+            else{
+                System.out.println("-----------------");
+                System.out.print("MonthlyEarn="+LMgr[j-1].MonthlyEarn+"\n");
+                System.out.print("age="+LMgr[j-1].age+"\n");
+                System.out.print("name="+LMgr[j-1].name+"\n");
+                System.out.print("local="+LMgr[j-1].local+"\n");
+                System.out.print("holdTruckNum="+LMgr[j-1].holdTruckNum+"\n");    
+                System.out.println("-----------------");
+            }
+        }
+        else{
+            System.out.println("you are not HeadMgr");
+        }
+    }
+    
 
     public void modifyLocalMgrStat(int n,int earn, int age, String name, String local){
         if(isHM ==true){
@@ -122,9 +143,18 @@ public class HeadManager{
         }
     }
 
-    public void modifyTruck(){
+    public void modifyTruck(int n,String model, String usage, int charge, int privitNum){
         if(isHM ==true){
+            if(i>n){
+                truck[n].model = model;
+                truck[n].usage = usage;
+                truck[n].charge = charge;
+                truck[n].privitNum = privitNum;
 
+            }
+            else{
+                System.out.println("that truck is not exist");
+            }
         }
         else{
             System.out.println("you are not HeadMgr");

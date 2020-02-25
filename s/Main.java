@@ -12,5 +12,6 @@ public class Main{
         song.setHoldTruckNum(3);
         kim.printLocalMgrStat();
         song.printStat();
+        kim.printRecentMgrStat();
     }
 }
