@@ -3,15 +3,15 @@ import java.util.HashMap;
 
 public class OpenChatManage{
 	private String[] record= new String[100000];
-    private HashMap<String, String> userDate = new HashMap<>();
+    private HashMap<String, String> userData = new HashMap<>();
     private int n =0;
 
-    public void setRecord(String ID, String NickName){
-        this.userDate.put(ID, NickName);
+    public void setData(String ID, String NickName){
+        this.userData.put(ID, NickName);
     }
 
-    public String getRecord(String ID){
-        return userDate.get(ID); 
+    public String getData(String ID){
+        return userData.get(ID); 
     }
     
     public void saveRecord(String s) {
@@ -25,7 +25,7 @@ public class OpenChatManage{
     		}
     		else {
     			if(record[i].contains(ID)) {
-    				record[i]=record[i].replace(userDate.get(ID),NickName);
+    				record[i]=record[i].replace(userData.get(ID),NickName);
     			}
     		}
     	}

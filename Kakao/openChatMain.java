@@ -16,37 +16,27 @@ public class openChatMain{
         	System.out.println("--------------------------------");
         	System.out.print(">");
         	String s = scan.nextLine();
-        	//System.out.println(s);
         	String[] array = s.split(" ");
         	if(array[0].equals(s1)) {
-        		//mgr.saveRecord(s);
-        		//mgr.changeNickname(array[1], array[2]);
-        		//mgr.setRecord(array[1],array[2]);
-        		
-        		if(mgr.getRecord(array[1])==null) {
+        		if(mgr.getData(array[1])==null) {
         			mgr.saveRecord(s);
-        			mgr.setRecord(array[1], array[2]);
+        			mgr.setData(array[1], array[2]);
         		}
         		else {
-        			if((mgr.getRecord(array[1])).equals(array[2])) {
+        			if((mgr.getData(array[1])).equals(array[2])) {
         				mgr.saveRecord(s);
         			}
         			else {
         				mgr.saveRecord(s);
             			mgr.changeNickname(array[1], array[2]);
-            			mgr.setRecord(array[1], array[2]);
-            			System.out.println("hi");
+            			mgr.setData(array[1], array[2]);
         			}
-        			/*
-        			mgr.saveRecord(s);
-        			mgr.setRecord(array[1], array[2]);
-        			mgr.changeNickname(array[1], array[2]);
-        			*/
+        		
         		}
         		
         	}
         	else if(array[0].equals(s2)) {
-        		if(mgr.getRecord(array[1])==null) {
+        		if(mgr.getData(array[1])==null) {
         			System.out.println("not exist");
         		}
         		else {
@@ -56,7 +46,8 @@ public class openChatMain{
         	}
         	else if(array[0].equals(s3)) {
         		mgr.saveRecord(s);
-        		mgr.changeNickname(array[1], array[2]);
+				mgr.changeNickname(array[1], array[2]);
+				mgr.setData(array[1], array[2]);
         	}
         	else if(s.equals(s4)) {
         		break;
