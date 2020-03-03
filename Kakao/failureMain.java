@@ -1,4 +1,5 @@
 //19 kakao 2
+package Kakao;
 import java.util.Scanner;
 
 public class failureMain {
@@ -7,7 +8,7 @@ public class failureMain {
 		while(true) {
 			System.out.print("input Num(1~500) : ->");
 			int N= scan.nextInt();
-		
+			
 			if(N>500) {
 				System.out.println("Num must under the 500");
 				System.out.println("progran end");

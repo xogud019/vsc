@@ -1,4 +1,5 @@
 //19 kakao 2
+package Kakao;
 public class failureRate {
 	int[] stages;
 	double[] failRate;

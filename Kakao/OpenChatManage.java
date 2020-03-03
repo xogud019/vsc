@@ -1,4 +1,5 @@
 //19 kakao 1`st problem
+package Kakao;
 import java.util.HashMap;
 
 public class OpenChatManage{
