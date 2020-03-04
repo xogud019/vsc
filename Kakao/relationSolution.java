@@ -20,6 +20,7 @@ public class relationSolution{
         HashSet<Integer> candidateKey= new HashSet<Integer>();
 
         for(int i=1; i<(1<<col);i++){
+            //empty set Exclusion
             relationSet.clear();
             for(int j=0; j<row; j++){
                 String data ="";
@@ -31,11 +32,12 @@ public class relationSolution{
                 }
                 relationSet.add(data);
                 System.out.print(relationSet);
+                System.out.println();
             }
             if(relationSet.size()==row){
                 insert(candidateKey, i);
             }
-            System.out.println();
+            System.out.println(i+"end");
         }
         return candidateKey.size();
     }
@@ -43,9 +45,11 @@ public class relationSolution{
     private static void insert(HashSet<Integer> candidateKey,int n){
         for(int k:candidateKey){
             if((k&n)==k){
+                System.out.println(k);
                 return;
             }
         }
         candidateKey.add(n);
+        System.out.println("add");
     }
 }
