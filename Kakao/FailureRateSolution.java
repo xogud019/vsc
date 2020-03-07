@@ -1,3 +1,4 @@
+//kakao 19`2
 public class FailureRateSolution{
     
     public static void solution(int N, int[] stages){
