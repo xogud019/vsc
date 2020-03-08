@@ -1,5 +1,5 @@
 //kakao 19`4 accuracy
-public class FoodLive{
+public class FoodLiveSolution{
     public static int solution(int[] foodTimes, int k){
         //error list
         if(foodTimes.length<1||foodTimes.length>2000){
