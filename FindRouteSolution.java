@@ -1,4 +1,4 @@
-//kakao 19`5
+//kakao 19`5  not perfect
 import java.util.*;
 
 public class FindRouteSolution{
