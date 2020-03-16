@@ -1,4 +1,5 @@
 //kakao 19`1
+package Kakao;
 import java.util.*;
 
 public class OpenChatSolution{

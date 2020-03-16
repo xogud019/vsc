@@ -1,4 +1,5 @@
 //kakao 19`4 accuracy
+package Kakao;
 public class FoodLiveSolution{
     public static int solution(int[] foodTimes, int k){
         //error list

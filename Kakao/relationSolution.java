@@ -1,4 +1,5 @@
 //kakao 19`s 3pro
+package Kakao;
 import java.util.*;
 public class relationSolution{
     public static void main(String[] args){

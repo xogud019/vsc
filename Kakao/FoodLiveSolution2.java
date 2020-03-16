@@ -1,4 +1,5 @@
 //kakao 19`4 efficiency
+package Kakao;
 public class FoodLiveSolution2{
     public static int solution(int[] foodTimes, long k){
         //error list

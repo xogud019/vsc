@@ -1,4 +1,6 @@
 //kakao 19`2
+package Kakao;
+
 public class FailureRateSolution{
     
     public static void solution(int N, int[] stages){
