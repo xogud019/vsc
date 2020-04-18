@@ -2,17 +2,6 @@
 package Kakao;
 import java.util.*;
 public class relationSolution{
-    public static void main(String[] args){
-        String[][] relation={{"100","ryan","music","2"},
-                            {"200","apeach","math","2"},
-                            {"300","tube","computer","3"},
-                            {"400","con","computer","1"},
-                            {"500","muzi","music","3"},
-                            {"600","apeach","music","2"}};
-        int key =Solution(relation);
-        System.out.println(key);
-    }
-
     public static int Solution(String[][] relation){
         int row = relation.length;
         int col = relation[0].length;
@@ -52,5 +41,16 @@ public class relationSolution{
         }
         candidateKey.add(n);
         System.out.println("add");
+    }
+
+    public static void main(String[] args){
+        String[][] relation={{"100","ryan","music","2"},
+                            {"200","apeach","math","2"},
+                            {"300","tube","computer","3"},
+                            {"400","con","computer","1"},
+                            {"500","muzi","music","3"},
+                            {"600","apeach","music","2"}};
+        int key =Solution(relation);
+        System.out.println(key);
     }
 }
