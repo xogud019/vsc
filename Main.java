@@ -1,80 +1,57 @@
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
-        String str = "))()))((((";
-        System.out.println(recurCheck(str));
+        String balancedParenthesis = "()()((()))())))(((";
+        Main ss = new Main();
+        System.out.print(ss.solution(balancedParenthesis));
     }
 
-    static 
-    boolean isRight(String str) {
-        int count = 0;
-        boolean isRight = true;
+    public String solution(String balancedParenthesis) {
+        return getCorrectParenthesis(balancedParenthesis);
+    }
 
-        for(int i = 0 ; i < str.length(); i++) {
-            if(str.charAt(i) == '(')
-                count++;
-            else
-                count--;
-
-            if(count < 0 ) {
-                isRight = false;
+    private boolean isCorrectParenthesis(String balancedParenthesis) {
+        int strLen = balancedParenthesis.length();
+        int open = 0;
+        for (int i = 0; i < strLen; i++) {
+            if (balancedParenthesis.charAt(i) == '(') {
+                open++;
+            } else {
+                if (open == 0) return false;
+                open--;
             }
         }
-        return isRight;
+        return true;
     }
 
-    public static int firstBalance(String str) {
-        int count = 0;
+    private String getCorrectParenthesis(String balancedParenthesis) {
+        if (balancedParenthesis.length() == 0) return balancedParenthesis;
 
-        for(int i = 0 ; i < str.length(); i++) {
-            if(str.charAt(i) == '(')
-                count++;
-            else
-                count--;
-
-            if(count == 0 ) {
-                return i;
-            }
+        int open = 0;
+        int close = 0;
+        for (char c : balancedParenthesis.toCharArray()) {
+            if (c == '(') open++;
+            else close++;
+            if (open == close) break;
         }
+        int uLen = open + close;
+        String u = balancedParenthesis.substring(0, uLen);
+        String v = balancedParenthesis.substring(uLen);
 
-        return -1;
-    }
-
-    public static String recurCheck(String str) {
-        String u = "";
-        String v = "";
-        String resultStr = "";
-
-        if(isRight(str)) 
-            return str;
-        else {
+        if (isCorrectParenthesis(u)) {
+            return u + getCorrectParenthesis(v);
+        } else {
             
-            if(str.length() >= 2) {
-                u += str.substring(0, firstBalance(str) +1);
-                v += str.substring(firstBalance(str) + 1, str.length());
-            }
-
-           
-            if(isRight(u)) {
-                return u + recurCheck(v);
-            }else {
-                resultStr += "("+recurCheck(v)+")";
-                u = u.substring(1 , u.length() - 1);
-
-                StringBuilder newU = new StringBuilder(u);
-                for(int i = 0; i < u.length(); i++) {
-                    if(u.charAt(i)=='(') {
-                        newU.setCharAt(i, ')');
-                    }else {
-                        newU.setCharAt(i, '(');
-                    }
+            String uDash = "(" + getCorrectParenthesis(v) + ")";
+            for (int i = 1; i < uLen - 1; i++) {
+                if (u.charAt(i) == '(') {
+                    uDash += ")";
+                } else {
+                    uDash += "(";
                 }
-                resultStr += newU.toString();
-                return resultStr;
             }
+            return uDash;
         }
     }
 }

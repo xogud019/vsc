@@ -1,9 +1,9 @@
-package Kakao;
+
 public class BracketTransfer {
     public static void main(String[] args){
-        String s = "))()))((((";
+        String s = "()()((()))())))(((";
         String result = Solution(s);
-        System.out.println(result);
+        System.out.print(result);
         
     }
 
