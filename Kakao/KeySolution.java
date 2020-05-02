@@ -4,10 +4,7 @@ public class KeySolution {
     public static void main(String[] args){
         int[][] key ={{0,0,0},{1,0,0},{0,1,1}};
         int[][] lock ={{1,1,1,1,0},{1,1,1,0,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1}};
-        boolean result = false;
-        print(lock);
-        print(key);
-        result = solution(lock,key);
+        boolean result = solution(lock,key);
         System.out.println(result);
     }
 
