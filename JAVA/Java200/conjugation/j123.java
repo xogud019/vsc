@@ -1,3 +1,4 @@
+package JAVA.Java200.conjugation;
 public class j123{
     public static void printDivide(int n){
         if(n==1){

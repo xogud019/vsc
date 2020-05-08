@@ -1,4 +1,5 @@
 //j127
+package JAVA.Java200.conjugation;
 public class SmithNum{
     public static int sumEach(int n){
         int tot=0;
