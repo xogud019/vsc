@@ -15,17 +15,20 @@ public class tuple {
 
     public static int[] solution(String s){
         int[] answer={};
+        ArrayList<String> list =new ArrayList<>();
         String ss =s.substring(1, s.length()-1);
-        int first=0;
+        int count=0;
+        
         String[] tempArray =ss.split(",");
+        /*
         for(int i=0; i<tempArray.length; i++){
-            //System.out.println(tempArray[i]);
-            /*
             if(tempArray[i].contains("{")&&tempArray[i].contains("}")){
-
+                list.add(tempArray[i]);
+                count++;
             }
-            */
+            
         }
+        */
         
         return answer;
     }
