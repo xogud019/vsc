@@ -62,19 +62,19 @@ int main(int argc, char **argv){
 
 	
 	if(connect(servSock,(struct sockaddr*)&serverAddr, sizeof(serverAddr))<0){
-			printf("connect server failed\n");
-			exit(1);
+		printf("connect server failed\n");
+		exit(1);
 	}
 	else{
 		printf("connet server\n");
 	}
 	
 	bzero(RSAM,sizeof(RSAM));		//rsa exchange start
-        read(servSock,RSAM,sizeof(RSAM));
+    read(servSock,RSAM,sizeof(RSAM));
 	N =atoi(RSAM);
 
 	bzero(next,sizeof(RSAM));
-        read(servSock,RSAM,sizeof(RSAM));
+    read(servSock,RSAM,sizeof(RSAM));
 	e = atoi(RSAM);
 	printf("N = %d e = %d\n", N,e);		//rsa exchange end
 	
@@ -91,25 +91,32 @@ int main(int argc, char **argv){
 	while(1){
 		printf("input ID : ");
    		bzero(ID,sizeof(ID));
-        	n = 0;
-        	while((ID[n++] = getchar()) != '\n');
+        n = 0;
+        while((ID[n++] = getchar()) != '\n');
+
 		for(i = 0; (i < 100 && ID[i] != '\0'); i++)
         	ID[i] = ID[i] + cliKey;
-        	write(servSock,ID,sizeof(ID));
+
+        write(servSock,ID,sizeof(ID));
 		bzero(next,sizeof(next));
-                read(servSock,next,sizeof(next));
+        read(servSock,next,sizeof(next));
+
 		if((strncmp(next,"next",4))==0){
 			printf("input PWD : ");
-        		bzero(PWD,sizeof(PWD));
-        		n = 0;
-       			while((PWD[n++] = getchar()) != '\n');
+        	bzero(PWD,sizeof(PWD));
+        	n = 0;
+       		while((PWD[n++] = getchar()) != '\n');
+
 			for(i = 0; (i < 100 && PWD[i] != '\0'); i++)
         		PWD[i] = PWD[i] + cliKey;
-        		write(servSock,PWD,sizeof(PWD));
+
+        	write(servSock,PWD,sizeof(PWD));
 			bzero(next,sizeof(next));
-                	read(servSock,next,sizeof(next));
+            read(servSock,next,sizeof(next));
+
 			if((strncmp(next,"next",4))==0){
 				printf("Authecation Success\n");
+
 				while(1){
 					bzero(sendM,sizeof(sendM));
 					printf("\nSend Message : ");
@@ -121,17 +128,19 @@ int main(int argc, char **argv){
 					sprintf(sendM,"%d",num1);
 					for(i = 0; (i < 100 && sendM[i] != '\0'); i++)
         				sendM[i] = sendM[i] + cliKey;
+
 					write(servSock,sendM,sizeof(sendM));
 					if((strncmp(sendM,"exit",4))==0){
-                      	 			printf("client Exit \n");
-                        			break;
-                			}
+                      	printf("client Exit \n");
+                        break;
+                	}
 	
 					bzero(sendM,sizeof(sendM));
 					printf("\nReceive Message : ");
 					read(servSock,sendM,sizeof(sendM));
 					for(i = 0; (i < 100 && sendM[i] != '\0'); i++)
         				sendM[i] = sendM[i] - cliKey;
+						
 					num = atoi(sendM);
 					num = powMod(num,e,N);
 					printf("%d",num);

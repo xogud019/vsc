@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
 
 	srand(time(NULL));
 
-        int servSock, cliSock, serverlen,clientlen,nRcv;
+    int servSock, cliSock, serverlen,clientlen,nRcv;
 	int num;
 	int n;
 	int i;					//dh
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
 	char buf1[MAX],buf2[MAX];		//id,pwd string save
 	char *line_p;
 	
-        struct sockaddr_in serverAddr, clientAddr;
+    struct sockaddr_in serverAddr, clientAddr;
 
 	if(argc !=2){
 		printf("insert port Number\n");
@@ -85,11 +85,11 @@ int main(int argc, char *argv[]){
 	printf("N = %d oN = %d e = %d d = %d\n",N,oN,e,d);
 
 	fgets(buf1,sizeof(buf1),user);
- //       if((line_p = strchr(buf1,'\n'))!=NULL)*line_p = '\0';
-        fgets(buf2,sizeof(buf2),user);
-   //     if((line_p = strchr(buf2,'\n'))!=NULL)*line_p = '\0';
+    //if((line_p = strchr(buf1,'\n'))!=NULL)*line_p = '\0';
+    fgets(buf2,sizeof(buf2),user);
+    //if((line_p = strchr(buf2,'\n'))!=NULL)*line_p = '\0';
 
-        servSock = socket(AF_INET,SOCK_STREAM, DEFAULT_PROTOCOL);
+    servSock = socket(AF_INET,SOCK_STREAM, DEFAULT_PROTOCOL);
 	
 	if(servSock == -1){
 		printf("socket creation failed\n");
@@ -99,16 +99,16 @@ int main(int argc, char *argv[]){
 		printf("socket creation success\n");
 	}
 
-        memset(&serverAddr,0,sizeof(struct sockaddr_in));
-        serverAddr.sin_family = AF_INET;
-        serverAddr.sin_port = htons(atoi(argv[1]));
-        serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    memset(&serverAddr,0,sizeof(struct sockaddr_in));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(atoi(argv[1]));
+    serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-        if(bind(servSock,(struct sockaddr*)&serverAddr, sizeof(serverAddr))!=0){
-                        printf("binding failed\n");
-                        exit(1);
-        }
-        else{
+    if(bind(servSock,(struct sockaddr*)&serverAddr, sizeof(serverAddr))!=0){
+        printf("binding failed\n");
+        exit(1);
+    }
+    else{
 		printf("binding success\n");
 	}
 
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]){
 	clientlen = sizeof(clientAddr);
 	cliSock = accept(servSock,(struct sockaddr*)&clientAddr,&clientlen);
 	printf("server accept\n");
-        printf("connected\n");
+    printf("connected\n");
 
 	bzero(RSAM,sizeof(RSAM));		//rsa exchange start
 	sprintf(RSAM,"%d",N);
@@ -145,47 +145,57 @@ int main(int argc, char *argv[]){
 	while(1){
 		bzero(ID,sizeof(ID));
 		printf("ID :");
-      	 	read(cliSock,ID,sizeof(ID));
+      	read(cliSock,ID,sizeof(ID));
+
 		for(i = 0; (i < 100 && ID[i] != '\0'); i++)
         	ID[i] = ID[i] - servKey;
-		if(strncmp("exit",ID,4) ==0){
-					fclose(user);
-                                        printf("Server Exit\n");
-                                        break;
-                                 }
 
-        	printf("%s",ID);
+		if(strncmp("exit",ID,4) ==0){
+			fclose(user);
+            printf("Server Exit\n");
+            break;
+        }
+
+        printf("%s",ID);
+
 		if(strcmp(buf1,ID)==0){
 			write(cliSock,next,sizeof(next));
 			bzero(PWD,sizeof(PWD));
 			printf("PWD :");
 			read(cliSock,PWD,sizeof(PWD));
+
 			for(i = 0; (i < 100 && PWD[i] != '\0'); i++)
         		PWD[i] = PWD[i] - servKey;
+
 			if(strncmp("exit",PWD,4) ==0){
-					fclose(user);
-                                        printf("Server Exit\n");
-                                        break;
-                                 }
+				fclose(user);
+                printf("Server Exit\n");
+                break;
+            }
 
 			printf("%s",PWD);
+
 			if(strcmp(buf2,PWD)==0){
 				printf("Authecation Success\n");
 				write(cliSock,next,sizeof(next));
+
 				while(1){
 					bzero(sendM,sizeof(sendM));
 					printf("Message Receive : ");
 					read(cliSock,sendM,sizeof(sendM));
+
 					for(i = 0; (i < 100 && sendM[i] != '\0'); i++)
         				sendM[i] = sendM[i] - servKey;
+
 					num1 = atoi(sendM);
 					num1 = powMod(num1,d,N);
 					sprintf(sendM,"%d",num1);
+
 					if(strncmp("exit",sendM,4) ==0){
 						fclose(user);
-                				printf("Server Exit\n");
-                				break;
-               				 }
+                		printf("Server Exit\n");
+                		break;
+               		}
 
 					printf("%s\n",sendM);
 					num = atoi(sendM);
@@ -194,6 +204,7 @@ int main(int argc, char *argv[]){
 					sprintf(sendM,"%d",num);
 					for(i = 0; (i < 100 && sendM[i] != '\0'); i++)
         				sendM[i] = sendM[i] + servKey;
+
 					write(cliSock,sendM,sizeof(sendM));
 					printf("Send Message \n");
 				}	
